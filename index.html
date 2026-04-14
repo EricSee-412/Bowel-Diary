@@ -136,6 +136,7 @@
             display: flex;
             gap: var(--space-16);
             margin-top: var(--space-8);
+            flex-wrap: wrap;
         }
 
         .radio-option {
@@ -217,6 +218,7 @@
             display: flex;
             justify-content: space-between;
             align-items: start;
+            gap: 12px;
         }
 
         .record-content {
@@ -231,7 +233,7 @@
 
         .record-detail {
             display: grid;
-            grid-template-columns: 120px 1fr;
+            grid-template-columns: 140px 1fr;
             gap: var(--space-8);
             margin-bottom: var(--space-8);
             font-size: var(--font-size-base);
@@ -250,6 +252,7 @@
             color: white;
             padding: var(--space-8) var(--space-16);
             font-size: 13px;
+            flex-shrink: 0;
         }
 
         .btn-delete:hover {
@@ -294,7 +297,7 @@
 
         .bristol-type {
             display: grid;
-            grid-template-columns: 50px 1fr;
+            grid-template-columns: 70px 1fr;
             gap: var(--space-12);
             padding: var(--space-8);
             background: var(--color-background);
@@ -306,19 +309,73 @@
             font-weight: 600;
             color: var(--color-primary);
             text-align: center;
-            font-size: var(--font-size-lg);
+            font-size: var(--font-size-base);
+            line-height: 1.2;
         }
 
         .bristol-desc {
             font-size: 13px;
             color: var(--color-text);
-            line-height: 1.4;
+            line-height: 1.45;
         }
 
         .bristol-visual {
-            text-align: center;
-            font-size: 24px;
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .stool-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            background: #c99b6a;
+            color: #fff;
+            font-size: 16px;
             line-height: 1;
+            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.12);
+        }
+
+        .stool-icon.line {
+            border-radius: 8px;
+            width: 44px;
+            height: 16px;
+            font-size: 0;
+        }
+
+        .stool-icon.soft {
+            border-radius: 14px;
+            width: 32px;
+            height: 20px;
+            font-size: 0;
+        }
+
+        .stool-icon.fluffy {
+            border-radius: 10px;
+            width: 30px;
+            height: 24px;
+            font-size: 0;
+        }
+
+        .stool-icon.water {
+            border-radius: 8px;
+            width: 22px;
+            height: 22px;
+            font-size: 18px;
+        }
+
+        .bristol-reference {
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            line-height: 1.4;
+            border-top: 1px solid var(--color-card-border);
+            padding-top: 10px;
         }
 
         @media (max-width: 600px) {
@@ -339,8 +396,12 @@
             }
 
             .record-detail {
-                grid-template-columns: 100px 1fr;
+                grid-template-columns: 105px 1fr;
                 font-size: 13px;
+            }
+
+            .bristol-type {
+                grid-template-columns: 58px 1fr;
             }
         }
     </style>
@@ -399,37 +460,76 @@
                         <option value="第6型 - 蓬鬆塊狀不成形">第6型 - 蓬鬆塊狀不成形</option>
                         <option value="第7型 - 水狀無固體">第7型 - 水狀無固體</option>
                     </select>
+
                     <div class="bristol-info">
                         <h3>布里斯托大便分類法參考圖</h3>
                         <div class="bristol-chart">
                             <div class="bristol-type">
                                 <div class="bristol-number">第1型</div>
-                                <div class="bristol-desc">分離硬塊，像堅果（難以排出）<br><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dc8a026e-7734-4b21-a296-81bf9631e82b" alt="Type 1" style="max-width: 80px; height: auto; margin-top: 4px;"></div>
+                                <div class="bristol-desc">
+                                    分離硬塊，像堅果（難以排出）
+                                    <div class="bristol-visual">
+                                        <span class="stool-icon">●</span><span class="stool-icon">●</span><span class="stool-icon">●</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bristol-type">
                                 <div class="bristol-number">第2型</div>
-                                <div class="bristol-desc">成條香腸狀，但表面凹凸<br><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/a63932a7-0173-4f52-aca2-228e9b295bae" alt="Type 2" style="max-width: 100px; height: auto; margin-top: 4px;"></div>
+                                <div class="bristol-desc">
+                                    成條香腸狀，但表面凹凸
+                                    <div class="bristol-visual">
+                                        <span class="stool-icon line"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bristol-type">
                                 <div class="bristol-number">第3型</div>
-                                <div class="bristol-desc">如條狀香腸，但表面有裂痕<br><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3a900c6b-121f-497d-af16-a832993980e6" alt="Type 3" style="max-width: 80px; height: auto; margin-top: 4px;"></div>
+                                <div class="bristol-desc">
+                                    如條狀香腸，但表面有裂痕
+                                    <div class="bristol-visual">
+                                        <span class="stool-icon line" style="width:56px;"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bristol-type">
                                 <div class="bristol-number">第4型</div>
-                                <div class="bristol-desc">像條狀香腸或蛇，平滑柔軟（理想）<br><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/3253521f-b0ca-4a66-a264-5674c471f031" alt="Type 4" style="max-width: 100px; height: auto; margin-top: 4px;"></div>
+                                <div class="bristol-desc">
+                                    像條狀香腸或蛇，平滑柔軟（理想）
+                                    <div class="bristol-visual">
+                                        <span class="stool-icon line" style="width:62px;"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bristol-type">
                                 <div class="bristol-number">第5型</div>
-                                <div class="bristol-desc">柔軟塊狀，清楚邊緣<br><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/92562a39-67c0-4e15-adca-9aaaa2db0994" alt="Type 5" style="max-width: 80px; height: auto; margin-top: 4px;"></div>
+                                <div class="bristol-desc">
+                                    柔軟塊狀，清楚邊緣
+                                    <div class="bristol-visual">
+                                        <span class="stool-icon soft"></span><span class="stool-icon soft" style="width:24px;"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bristol-type">
                                 <div class="bristol-number">第6型</div>
-                                <div class="bristol-desc">蓬鬆塊狀，不成形<br><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/109c26fe-d29b-4d79-9533-1cdb76facf7b" alt="Type 6" style="max-width: 80px; height: auto; margin-top: 4px;"></div>
+                                <div class="bristol-desc">
+                                    蓬鬆塊狀，不成形
+                                    <div class="bristol-visual">
+                                        <span class="stool-icon fluffy"></span><span class="stool-icon fluffy" style="opacity:.9"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bristol-type">
                                 <div class="bristol-number">第7型</div>
-                                <div class="bristol-desc">水狀，無固體（腹瀉）<br><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/0dcadbd2-1591-45c3-bfdd-292b4e671cb2" alt="Type 7" style="max-width: 80px; height: auto; margin-top: 4px;"></div>
+                                <div class="bristol-desc">
+                                    水狀，無固體（腹瀉）
+                                    <div class="bristol-visual">
+                                        <span class="stool-icon water">💧</span>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="bristol-reference">
+                            Reference: Cabot Health. Bristol Stool Chart. 2014. Available from the archived source: http://cdn.intechopen.com/pdfs-wm/46082.pdf.
                         </div>
                     </div>
                 </div>
@@ -492,7 +592,7 @@
 
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('date').value = today;
-            
+
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -681,4 +781,5 @@
     </script>
 </body>
 </html>
+
 
